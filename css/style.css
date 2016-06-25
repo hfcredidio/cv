@@ -1,0 +1,116 @@
+@page {
+    size: 21cm 29.7cm;
+    margin: 10mm 15mm 15mm 15mm; /* change the margins as you want them to be. */
+}
+.cv {
+    width: 180mm;
+}
+
+.serif {
+    font-family: 'Scope One', serif;
+}
+.sans {
+    font-family: 'RobotoLight', sans-serif;
+}
+
+hr {
+    margin: 0;
+}
+
+.cv-header {
+    /*border: 1px solid red;*/
+}
+
+.cv-header-name {
+    text-transform: uppercase;
+    font-size: 32pt;
+    height: 30pt;
+}
+.cv-header-cv {
+    font-size: 16pt;
+    font-style: italic;
+    color: #606060;
+}
+
+.cv-header > hr{
+    margin-bottom: 15px;
+}
+
+.cv-section {
+    margin-bottom: 20px;
+}
+.cv-section:last-child {
+    margin-bottom: 0;
+}
+.cv-section-header {
+    text-transform: uppercase;
+    font-size: 17pt;
+    text-align: right;
+}
+.cv-section-entries {
+    border-left: 2px solid black;
+}
+
+.cv-per-key {
+    font-weight: bold;
+}
+
+
+.cv-entry {
+    margin-bottom: 10px;
+}
+.cv-entry:last-child {
+    margin-bottom: 0;
+}
+.cv-entry-title{
+    font-size: 12pt;
+    font-weight: bold;
+}
+.cv-entry-inst{
+    text-align: right;
+    font-size: 10pt;
+    color: #606060;
+    float:left;
+}
+.cv-entry-period{
+    text-align: right;
+    font-size: 10pt;
+    color: #606060;
+    float:right;
+}
+.cv-entry-thesis {
+    font-style: italic;
+}
+
+
+.cv-pub {
+    margin-bottom: 10px;
+}
+.cv-pub:last-child {
+    margin-bottom: 0;
+}
+.cv-pub-authors {
+    font-size: 9pt;
+}
+.cv-pub-title {
+    font-size: 9pt;
+    font-weight: bold;
+}
+.cv-pub-cite {
+    font-size: 9pt;
+    color: #606060;
+}
+.cv-pub-notes {
+    font-size: 9pt;
+    color: #606060;
+}
+
+
+.cv-prog-cat {
+    margin-bottom: 5px;
+}
+
+.cv-cat-title {
+    text-align: right;
+    font-weight: bold;
+}

@@ -1,0 +1,153 @@
+<!DOCTYPE html>{% set stars = {'1': '★☆☆', '2': '★★☆', '3': '★★★', 'N': 'Native'} %}
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Scope+One" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>CV</title>
+  </head>
+  <body>
+    <div class="cv">
+      <div class="cv-header">
+        <div class="cv-header-name serif">{{cv.personal.first_name|escape}}
+{{cv.personal.last_name|escape}}
+        </div>
+        <div class="cv-header-cv serif">Curriculum Vitae
+        </div>
+        <hr>
+      </div>
+      <div class="cv-section row">
+        <div class="cv-section-header col-xs-3">
+          <div class="cv-section-title serif">Personal</div>
+        </div>{% set c = cv.personal %}
+        <div class="cv-section-entries col-xs-9">
+          <div class="row">
+            <div class="cv-per-val sans col-xs-6">{{c.first_name|escape}} {{c.middle_name|escape}} {{c.last_name|escape}}
+            </div>
+            <div class="cv-per-val sans col-xs-6">{{c.telephone|escape}}</div>
+          </div>
+          <div class="row">
+            <div class="cv-per-val sans col-xs-6">{{c.address.base|escape}}
+            </div>
+            <div class="cv-per-val sans col-xs-6">Skype: {{c.skype|escape}}</div>
+          </div>
+          <div class="row">
+            <div class="cv-per-val sans col-xs-6">{{c.address.postal_code|escape}}, {{c.address.city|escape}},
+{{c.address.state|escape}}, {{c.address.country|escape}}
+            </div>
+            <div class="cv-per-val sans col-xs-6"><a{{__pyjade_attrs(attrs=[('href',('mailto:'+c.email))], terse=True)}}>{{c.email|escape}}</a>
+            </div>
+          </div>
+          <div class="row">
+            <div class="cv-per-val sans col-xs-6">{{c.others[0]|escape}}</div>
+            <div class="cv-per-val sans col-xs-6"><a{{__pyjade_attrs(attrs=[('href',(c.site))], terse=True)}}>{{c.site|escape}}</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="cv-section row">
+        <div class="cv-section-header col-xs-3">
+          <div class="cv-section-title serif">Education</div>
+        </div>
+        <div class="cv-section-entries col-xs-9">{% for c in __pyjade_iter(cv.education,1) %}
+          <div class="cv-entry">
+            <div class="cv-entry-header row">
+              <div class="cv-entry-title serif col-xs-4">{{c.title|escape}}</div>
+              <div class="col-xs-8">
+                <div class="cv-entry-inst sans">{{c.institution|escape}}, {{c.country|escape}}</div>
+                <div class="cv-entry-period sans">[{{c.start|escape}} - {{c.end|escape}}]</div>
+              </div>
+            </div>
+            <hr>
+            <div class="cv-entry-body">{% if  c.description %}
+              <div class="cv-entry-description sans">{{c.description|escape}}</div>{% endif %}{% if  c.thesis_title %}
+              <div class="cv-entry-thesis sans">{{c.thesis_type|escape}}: {{c.thesis_title|escape}}
+
+              </div>{% endif %}
+            </div>
+          </div>{% endfor %}
+        </div>
+      </div>
+      <div class="cv-section row">
+        <div class="cv-section-header col-xs-3">
+          <div class="cv-section-title serif">Experience</div>
+        </div>
+        <div class="cv-section-entries col-xs-9">{% for c in __pyjade_iter(cv.experience,1) %}
+          <div class="cv-entry">
+            <div class="cv-entry-header row">
+              <div class="cv-entry-title serif col-xs-4">{{c.title|escape}}</div>
+              <div class="col-xs-8">
+                <div class="cv-entry-inst sans">{{c.institution|escape}}, {{c.country|escape}}</div>
+                <div class="cv-entry-period sans">[{{c.start|escape}} - {{c.end|escape}}]</div>
+              </div>
+            </div>
+            <hr>
+            <div class="cv-entry-body">
+              <div class="cv-entry-description sans">{{c.description|escape}}</div>
+            </div>
+          </div>{% endfor %}
+        </div>
+      </div>
+      <div class="cv-section row">
+        <div class="cv-section-header col-xs-3">
+          <div class="cv-section-title serif">Scientific</div>
+          <div class="cv-section-title serif">Articles</div>
+        </div>
+        <div class="cv-section-entries col-xs-9">{% for c in __pyjade_iter(cv.publications,1) %}
+          <div class="cv-pub">
+            <div class="cv-pub-authors sans">{{c.authors|escape}}</div>
+            <div class="cv-pub-title sans">{{c.title|escape}}</div>{% if  c.link %}
+            <div class="cv-pub-cite sans">{{c.citation|escape}} [<a{{__pyjade_attrs(attrs=[('href',(c.link))], terse=True)}}>{{c.link|escape}}</a>]
+            </div>{% else %}
+
+            <div class="cv-pub-cite sans">{{c.citation|escape}}
+            </div>{% endif %}
+{% if  c.notes %}
+            <div class="cv-pub-notes sans">({{c.notes|escape}})
+
+            </div>{% endif %}
+          </div>{% endfor %}
+        </div>
+      </div>
+      <div class="cv-section row">
+        <div class="cv-section-header col-xs-3">
+          <div class="cv-section-title serif">Skills</div>
+        </div>
+        <div class="cv-section-entries col-xs-9">
+          <div class="cv-entry">
+            <div class="cv-entry-title serif">Programming & Software</div>
+            <hr>
+            <div class="cv-prog-cat row">
+              <div class="cv-cat-title col-xs-3 sans">Experienced</div>
+              <div class="col-xs-9 sans">Python (numpy, pandas, matplotlib, among others),
+C, C++, GNU/Linux
+              </div>
+            </div>
+            <div class="cv-prog-cat row">
+              <div class="cv-cat-title col-xs-3 sans">Sporadic Use</div>
+              <div class="col-xs-9 sans">CUDA, Javascript, HTML/CSS, OS/X, Windows, Latex, Word,
+Power Point
+              </div>
+            </div>
+            <div class="cv-prog-cat row">
+              <div class="cv-cat-title col-xs-3 sans">Basic Notions</div>
+              <div class="col-xs-9 sans">R, SQL, Excel
+
+              </div>
+            </div>
+          </div>
+          <div class="cv-entry">
+            <div class="cv-entry-title serif">Languages</div>
+            <hr>
+            <div class="row">
+              <div class="col-xs-3 sans">English (Fluent)</div>
+              <div class="col-xs-4 sans">Portuguese (Native)</div>
+              <div class="col-xs-5 sans">French (Conversational)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

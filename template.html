@@ -1,4 +1,113 @@
 <!DOCTYPE html>
+
+{% macro section(name, data, item_macro) %}
+<div class="cv-section row">
+    <div class="cv-section-header col-xs-3">
+        <div class="cv-section-title serif">{{ name }}</div>
+    </div>
+    <div class="cv-section-entries col-xs-9">
+        {% for c in data %}
+        {{ item_macro(c) }}
+        {% endfor %}
+    </div>
+</div>
+{% endmacro %}
+
+
+{% macro edu_item(data) %}
+<div class="cv-entry">
+    <div class="cv-entry-header row">
+        <div class="cv-entry-title serif col-xs-4">{{ data.title }}</div>
+        <div class="col-xs-8">
+            <div class="cv-entry-inst sans">{{ data.institution }}, {{ data.country }}</div>
+            <div class="cv-entry-period sans">[{{ data.start }} - {{ data.end }}]</div>
+        </div>
+    </div>
+    <hr>
+    <div class="cv-entry-body">
+        {% if data.description %}
+        <div class="cv-entry-description sans">{{ data.description }}</div>
+        {% endif %}
+        {% if data.thesis_title %}
+        <div class="cv-entry-thesis sans">
+            {{ data.thesis_type }}: {{ data.thesis_title }}
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endmacro %}
+
+
+{% macro exp_item(data) %}
+<div class="cv-entry">
+    <div class="cv-entry-header row">
+        <div class="cv-entry-title serif col-xs-4">{{ data.title }}</div>
+        <div class="col-xs-8">
+            <div class="cv-entry-inst sans">{{ data.institution }}, {{ data.country }}</div>
+            <div class="cv-entry-period sans">[{{ data.start }} - {{ data.end }}]</div>
+        </div>
+    </div>
+    <hr>
+    <div class="cv-entry-body">
+        <div class="cv-entry-description sans">{{ data.description }}</div>
+    </div>
+</div>
+{% endmacro %}
+
+
+{% macro pub_item(data) %}
+<div class="cv-pub">
+    <div class="cv-pub-authors sans">{{ data.authors|join(', ') }}</div>
+    <div class="cv-pub-title sans">{{ data.title }}</div>
+    {% if data.link %}
+    <div class="cv-pub-cite sans">
+        {{ data.citation }} [<a href="{{ data.link }}">{{ data.link }}</a>]
+    </div>
+    {% else %}
+    <div class="cv-pub-cite sans">
+        {{ data.citation }}
+    </div>
+    {% endif %}
+    {% if data.notes %}
+    <div class="cv-pub-notes sans">
+        ({{ data.notes }})
+    </div>
+    {% endif %}
+</div>
+{% endmacro %}
+
+
+{% macro personal_item(data) %}
+<div class="row">
+    <div class="cv-per-val sans col-xs-6">
+        {{ data.first_name }} {{data.middle_name }} {{ data.last_name }}
+    </div>
+    <div class="cv-per-val sans col-xs-6">{{ data.telephone }}</div>
+</div>
+<div class="row">
+    <div class="cv-per-val sans col-xs-6">
+        {{ data.address.base }}
+    </div>
+    <div class="cv-per-val sans col-xs-6">Skype: {{ data.skype }}</div>
+</div>
+<div class="row">
+    <div class="cv-per-val sans col-xs-6">
+        {{ data.address.postal_code }}, {{ data.address.city }},
+        {{ data.address.state }}, {{ data.address.country }}
+    </div>
+    <div class="cv-per-val sans col-xs-6">
+        <a href="mailto:{{ data.email }}">{{ data.email }}</a>
+    </div>
+</div>
+<div class="row">
+    <div class="cv-per-val sans col-xs-6">{{ data.others[0] }}</div>
+    <div class="cv-per-val sans col-xs-6">
+        <a href="{{ data.site }}">{{ data.site }}</a>
+    </div>
+</div>
+{% endmacro %}
+
+
 <html>
     <head>
         <link href="https://fonts.googleapis.com/css?family=Roboto|Scope+One" rel="stylesheet">
@@ -18,123 +127,10 @@
             <hr>
         </div>
 
-        <div class="cv-section row">
-            <div class="cv-section-header col-xs-3">
-                <div class="cv-section-title serif">Personal</div>
-            </div>
-            {% set c = cv.personal %}
-            <div class="cv-section-entries col-xs-9">
-                <div class="row">
-                    <div class="cv-per-val sans col-xs-6">
-                        {{ c.first_name }} {{c.middle_name }} {{ c.last_name }}
-                    </div>
-                    <div class="cv-per-val sans col-xs-6">{{ c.telephone }}</div>
-                </div>
-                <div class="row">
-                    <div class="cv-per-val sans col-xs-6">
-                        {{ c.address.base }}
-                    </div>
-                    <div class="cv-per-val sans col-xs-6">Skype: {{ c.skype }}</div>
-                </div>
-                <div class="row">
-                    <div class="cv-per-val sans col-xs-6">
-                        {{ c.address.postal_code }}, {{ c.address.city }},
-                        {{ c.address.state }}, {{ c.address.country }}
-                    </div>
-                    <div class="cv-per-val sans col-xs-6">
-                        <a href="mailto:{{ c.email }}">{{ c.email }}</a>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="cv-per-val sans col-xs-6">{{ c.others[0] }}</div>
-                    <div class="cv-per-val sans col-xs-6">
-                        <a href="{{ c.site }}">{{ c.site }}</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="cv-section row">
-            <div class="cv-section-header col-xs-3">
-                <div class="cv-section-title serif">Education</div>
-            </div>
-            <div class="cv-section-entries col-xs-9">
-                {% for c in cv.education %}
-                <div class="cv-entry">
-                    <div class="cv-entry-header row">
-                        <div class="cv-entry-title serif col-xs-4">{{ c.title }}</div>
-                        <div class="col-xs-8">
-                            <div class="cv-entry-inst sans">{{ c.institution }}, {{ c.country }}</div>
-                            <div class="cv-entry-period sans">[{{ c.start }} - {{ c.end }}]</div>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="cv-entry-body">
-                        {% if c.description %}
-                        <div class="cv-entry-description sans">{{ c.description }}</div>
-                        {% endif %}
-                        {% if c.thesis_title %}
-                        <div class="cv-entry-thesis sans">
-                            {{ c.thesis_type }}: {{ c.thesis_title }}
-                        </div>
-                        {% endif %}
-                    </div>
-                </div>
-                {% endfor %}
-            </div>
-        </div>
-
-        <div class="cv-section row">
-            <div class="cv-section-header col-xs-3">
-                <div class="cv-section-title serif">Experience</div>
-            </div>
-            <div class="cv-section-entries col-xs-9">
-                {% for c in cv.experience %}
-                <div class="cv-entry">
-                    <div class="cv-entry-header row">
-                        <div class="cv-entry-title serif col-xs-4">{{ c.title }}</div>
-                        <div class="col-xs-8">
-                            <div class="cv-entry-inst sans">{{ c.institution }}, {{ c.country }}</div>
-                            <div class="cv-entry-period sans">[{{ c.start }} - {{ c.end }}]</div>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="cv-entry-body">
-                        <div class="cv-entry-description sans">{{ c.description }}</div>
-                    </div>
-                </div>
-                {% endfor %}
-            </div>
-        </div>
-
-        <div class="cv-section row">
-            <div class="cv-section-header col-xs-3">
-                <div class="cv-section-title serif">Scientific</div>
-                <div class="cv-section-title serif">Articles</div>
-            </div>
-            <div class="cv-section-entries col-xs-9">
-                {% for c in cv.publications %}
-                <div class="cv-pub">
-                    <div class="cv-pub-authors sans">{{ c.authors|join(', ') }}</div>
-                    <div class="cv-pub-title sans">{{ c.title }}</div>
-                    {% if c.link %}
-                    <div class="cv-pub-cite sans">
-                        {{ c.citation }} [<a href="{{ c.link }}">{{ c.link }}</a>]
-                    </div>
-                    {% else %}
-                    <div class="cv-pub-cite sans">
-                        {{ c.citation }}
-                    </div>
-                    {% endif %}
-                    {% if c.notes %}
-                    <div class="cv-pub-notes sans">
-                        ({{ c.notes }})
-                    </div>
-                    {% endif %}
-                </div>
-                {% endfor %}
-            </div>
-        </div>
+        {{ section('Personal', [cv.personal], personal_item) }}
+        {{ section('Education', cv.education, edu_item) }}
+        {{ section('Experience', cv.experience, exp_item) }}
+        {{ section('Publications', cv.publications, pub_item) }}
 
         <div class="cv-section row">
             <div class="cv-section-header col-xs-3">

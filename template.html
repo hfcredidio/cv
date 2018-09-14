@@ -115,7 +115,7 @@
             <div class="cv-section-entries col-xs-9">
                 {% for c in cv.publications %}
                 <div class="cv-pub">
-                    <div class="cv-pub-authors sans">{{ c.authors }}</div>
+                    <div class="cv-pub-authors sans">{{ c.authors|join(', ') }}</div>
                     <div class="cv-pub-title sans">{{ c.title }}</div>
                     {% if c.link %}
                     <div class="cv-pub-cite sans">

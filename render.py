@@ -5,7 +5,10 @@ from data import decrypt
 from jinja2 import Template
 
 def render():
-    cvdata = decrypt('data.bin', os.getenv('CVKEY'))
+    key = os.getenv('CVKEY')
+    if not key:
+        raise ValueError('Environment variable CVKEY not set. Note to self: check LastPass')
+    cvdata = decrypt('data.bin', key)
     template = Template(open('template.html').read())
     render = template.render(cv=cvdata)
     with open('cv.html', 'w') as frender:

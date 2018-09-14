@@ -4,7 +4,7 @@ import toml
 from cryptography.fernet import Fernet
 
 
-def encrypt(toml_path, out_path, key):
+def encrypt(toml_path, key):
     if isinstance(key, str):
         key = key.encode('ascii')
 
@@ -12,8 +12,7 @@ def encrypt(toml_path, out_path, key):
         data = toml_file.read().encode('utf-8')
 
     encrypted_data =  Fernet(key).encrypt(data)
-    with open(out_path, 'wb') as out_file:
-        out_file.write(encrypted_data)
+    print(encrypted_data.decode('ascii'))
 
 
 def decrypt(bin_path, key):
@@ -28,6 +27,10 @@ def decrypt(bin_path, key):
 
 
 if __name__ == '__main__':
-    toml_path, out_path, *_ = sys.argv[1:]
+    what, input_path, *_ = sys.argv[1:]
+    what = what.lower().strip()
     key = os.getenv('CVKEY')
-    encrypt(toml_path, out_path, key)
+    if what == 'encrypt':
+        encrypt(input_path, key)
+    elif what == 'decrypt':
+        print(toml.dumps(decrypt(input_path, key)))

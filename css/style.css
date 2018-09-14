@@ -6,11 +6,12 @@
     width: 180mm;
 }
 
+* {
+    font-family: 'RobotoLight', sans-serif;
+}
+
 .serif {
     font-family: 'Scope One', serif;
-}
-.sans {
-    font-family: 'RobotoLight', sans-serif;
 }
 
 hr {
@@ -18,13 +19,15 @@ hr {
 }
 
 .cv-header {
-    /*border: 1px solid red;*/
+    text-align: center;
+    padding-bottom: 10px;
 }
 
 .cv-header-name {
     text-transform: uppercase;
     font-size: 32pt;
     height: 30pt;
+    margin-bottom: 10px;
 }
 .cv-header-cv {
     font-size: 16pt;
@@ -32,12 +35,9 @@ hr {
     color: #606060;
 }
 
-.cv-header > hr{
-    margin-bottom: 15px;
-}
-
 .cv-section {
-    margin-bottom: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 .cv-section:last-child {
     margin-bottom: 0;

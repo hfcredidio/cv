@@ -1,16 +1,14 @@
+import os
 import jinja2
 import json
 
+from data import decrypt
 
-with open('cv.json') as fcv:
-    cvdata = json.load(fcv)
+
+cvdata = decrypt('data.bin', os.getenv('CVKEY'))
 
 for c in cvdata['publications']:
     c['authors'] = ', '.join(c['authors'])
-
-c = cvdata['skills']['other_programming']
-cvdata['skills']['other_programming'] = ', '.join(c)
-
 
 env = jinja2.Environment(extensions=['pyjade.ext.jinja.PyJadeExtension'])
 env.loader = jinja2.FileSystemLoader('.')

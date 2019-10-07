@@ -12,7 +12,7 @@ def encrypt(toml_path, key):
         data = toml_file.read().encode('utf-8')
 
     encrypted_data =  Fernet(key).encrypt(data)
-    print(encrypted_data.decode('ascii'))
+    return encrypted_data
 
 
 def decrypt(bin_path, key):
@@ -31,6 +31,6 @@ if __name__ == '__main__':
     what = what.lower().strip()
     key = os.getenv('CVKEY')
     if what == 'encrypt':
-        encrypt(input_path, key)
+        print(encrypt(input_path, key).decode('ascii'))
     elif what == 'decrypt':
         print(toml.dumps(decrypt(input_path, key)))

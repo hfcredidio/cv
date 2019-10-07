@@ -25,8 +25,8 @@ hr {
 
 .cv-header-name {
     text-transform: uppercase;
-    font-size: 32pt;
-    height: 30pt;
+    font-size: 30pt;
+    height: 28pt;
     margin-bottom: 10px;
 }
 .cv-header-cv {
@@ -37,7 +37,7 @@ hr {
 
 .cv-section {
     padding-top: 10px;
-    padding-bottom: 10px;
+    padding-bottom: 8px;
 }
 .cv-section:last-child {
     margin-bottom: 0;
@@ -57,13 +57,13 @@ hr {
 
 
 .cv-entry {
-    margin-bottom: 10px;
+    margin-bottom: 7px;
 }
 .cv-entry:last-child {
     margin-bottom: 0;
 }
 .cv-entry-title{
-    font-size: 12pt;
+    font-size: 11pt;
     font-weight: bold;
 }
 .cv-entry-inst{

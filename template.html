@@ -54,7 +54,15 @@
     </div>
     <hr>
     <div class="cv-entry-body">
+        {% if data.responsibilities %}
+        <ul>
+            {% for resp in data.responsibilities %}
+            <li>{{ resp }}</li>
+            {% endfor %}
+        </ul>
+        {% else %}
         <div class="cv-entry-description">{{ data.description }}</div>
+        {% endif %}
     </div>
 </div>
 {% endmacro %}

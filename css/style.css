@@ -7,38 +7,40 @@
 body {
     width: 210mm;
     height: 297mm;
-    border: 1px solid red;
+    /*border: 1px solid red;*/
 }
 
 .cv {
     margin: 10mm 15mm 15mm 15mm;
-    border: 1px solid red;
+    /*border: 1px solid red;*/
 }
 
 * {
     font-family: 'IBM Plex Sans Condensed', sans-serif;
+    color: #555;
 }
 
 .serif {
     font-family: 'Bitter', serif;
+    color: #000;
 }
 
 hr {
     margin: 0;
     border: 0;
-    border-top: 1px #bbb solid;
+    border-top: 0.3mm #bbb solid;
 }
 
 .cv-header {
     text-align: center;
-    padding-bottom: 10px;
+    padding-bottom: 5mm;
 }
 
 .cv-header-name {
     text-transform: uppercase;
     font-size: 30pt;
     height: 28pt;
-    margin-bottom: 10px;
+    margin-bottom: 3mm;
     font-weight: bold;
 }
 
@@ -54,8 +56,8 @@ hr {
 .cv-section {
     display: grid;
     grid-template-columns: 21% 9fr;
-    padding-top: 10px;
-    padding-bottom: 8px;
+    padding-top: 2.5mm;
+    padding-bottom: 2.5mm;
 }
 
 .cv-section-header {
@@ -65,7 +67,7 @@ hr {
     padding-right: 3mm;
 }
 .cv-section-entries {
-    border-left: 3px solid black;
+    border-left: 1mm solid black;
     padding-left: 3mm;
 }
 
@@ -86,14 +88,14 @@ hr {
 .cv-entry-inst{
     text-align: right;
     font-size: 10pt;
-    color: #606060;
+    color: #000;
     float:left;
 }
 
 .cv-entry-period{
     text-align: right;
     font-size: 10pt;
-    color: #606060;
+    color: #000;
     float:right;
 }
 
@@ -106,7 +108,8 @@ hr {
 }
 
 .cv-prog-cat {
-    margin-bottom: 5px;
+    margin-top: 1.5mm;
+    margin-bottom: 1.5mm;
     display: grid;
     grid-template-columns: 25% 1fr;
 }
@@ -114,4 +117,20 @@ hr {
 .cv-cat-title {
     text-align: right;
     padding-right: 3mm;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+li {
+    list-style-type: none;
+    position: inside;
+    margin-bottom: -1mm;
+}
+
+li::before {
+    content: '-';
+    padding-right: 1mm;
+    font-size: 1.1em;
 }

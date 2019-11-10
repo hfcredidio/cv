@@ -67,18 +67,18 @@
     <hr>
     <div class="cv-prog-cat">
         <div class="cv-cat-title serif">Experienced:</div>
-        <div>{{ data.programming.experienced|join(', ') }}</div>
+        <div class="cv-entry-description">{{ data.programming.experienced|join(', ') }}</div>
     </div>
     <div class="cv-prog-cat">
         <div class="cv-cat-title serif">Knowledgeble:</div>
-        <div>{{ data.programming.sporadic|join(', ') }}</div>
+        <div class="cv-entry-description">{{ data.programming.sporadic|join(', ') }}</div>
     </div>
 </div>
 
 <div class="cv-entry">
     <div class="cv-entry-title serif">Languages</div>
     <hr>
-    <div>{{ data.languages|join(', ') }}</div>
+    <div class="cv-entry-description">{{ data.languages|join(', ') }}</div>
 </div>
 {% endmacro %}
 
@@ -86,9 +86,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <link href="https://fonts.googleapis.com/css?family=Quicksand|Raleway&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans+Condensed&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Bitter&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Glegoo:700|IBM+Plex+Sans+Condensed&display=swap" rel="stylesheet">
         <link rel="stylesheet", href="css/style.css">
         <title>CV</title>
     </head>

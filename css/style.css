@@ -24,8 +24,9 @@ body {
 }
 
 .serif {
-    font-family: 'Bitter', serif;
+    font-family: 'Glegoo', serif;
     color: #000;
+    line-height: 100%;
 }
 
 hr {
@@ -81,6 +82,7 @@ hr {
 
 .cv-entry-header {
     display: grid;
+    align-items: center;
     grid-template-columns: 1fr 1fr 1fr 0.7fr;
 }
 
@@ -115,6 +117,7 @@ hr {
     margin-top: 1.5mm;
     margin-bottom: 1.5mm;
     display: grid;
+    align-items: center;
     grid-template-columns: 25% 1fr;
 }
 

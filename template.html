@@ -14,13 +14,6 @@
 {% endmacro %}
 
 
-{% macro hil_item(data) %}
-<div class="cv-entry">
-    {{ data }}
-</div>
-{% endmacro %}
-
-
 {% macro edu_item(data) %}
 <div class="cv-entry">
     <div class="cv-entry-header">
@@ -111,7 +104,6 @@
             </div>
         </div>
 
-        {# {{ section('Highlights', cv.highlights, hil_item) }} #}
         {{ section('Experience', cv.experience, exp_item) }}
         {{ section('Education', cv.education, edu_item) }}
         {{ section('Skills', cv.skills, skill_item) }}

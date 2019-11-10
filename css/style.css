@@ -17,7 +17,10 @@ body {
 
 * {
     font-family: 'IBM Plex Sans Condensed', sans-serif;
-    color: #555;
+    /*stupid firefox bug needs to do set color this way otherwise greyscale
+     * gets print to pdf as black*/
+    color: transparent;
+    text-shadow: 0 0 0 #333;
 }
 
 .serif {
@@ -105,6 +108,7 @@ hr {
 
 .cv-entry-description {
     text-align: justify;
+    line-height: 113%;
 }
 
 .cv-prog-cat {

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 
 {% macro section(name, data, item_macro) %}
-<div class="cv-section row">
-    <div class="cv-section-header col-xs-3">
+<div class="cv-section">
+    <div class="cv-section-header">
         <div class="cv-section-title serif">{{ name }}</div>
     </div>
-    <div class="cv-section-entries col-xs-9">
+    <div class="cv-section-entries">
         {% for c in data %}
         {{ item_macro(c) }}
         {% endfor %}
@@ -23,12 +23,11 @@
 
 {% macro edu_item(data) %}
 <div class="cv-entry">
-    <div class="cv-entry-header row">
-        <div class="cv-entry-title serif col-xs-4">{{ data.title }}</div>
-        <div class="col-xs-8">
-            <div class="cv-entry-inst">{{ data.institution }}, {{ data.country }}</div>
-            <div class="cv-entry-period">[{{ data.start }} - {{ data.end }}]</div>
-        </div>
+    <div class="cv-entry-header">
+        <div class="cv-entry-title serif">{{ data.title }}</div>
+        <div class="cv-entry-title serif">{{ data.institution }}</div>
+        <div class="cv-entry-inst">{{ data.city }}, {{ data.country }}</div>
+        <div class="cv-entry-period">[{{ data.start }} - {{ data.end }}]</div>
     </div>
     <hr>
     <div class="cv-entry-body">
@@ -47,14 +46,11 @@
 
 {% macro exp_item(data) %}
 <div class="cv-entry">
-    <div class="cv-entry-header row">
-        <div class="cv-entry-title serif col-xs-4">{{ data.title }}</div>
-        <div class="col-xs-8">
-            <div class="cv-entry-inst">
-                {{ data.institution }} - {{ data.place }}
-            </div>
-            <div class="cv-entry-period">[{{ data.start }} - {{ data.end }}]</div>
-        </div>
+    <div class="cv-entry-header">
+        <div class="cv-entry-title serif">{{ data.title }}</div>
+        <div class="cv-entry-title serif">{{ data.institution }}</div>
+        <div class="cv-entry-inst">{{ data.place }}</div>
+        <div class="cv-entry-period">[{{ data.start }} - {{ data.end }}]</div>
     </div>
     <hr>
     <div class="cv-entry-body">
@@ -64,83 +60,24 @@
 {% endmacro %}
 
 
-{% macro pub_item(data) %}
-<div class="cv-pub">
-    <div class="cv-pub-authors">{{ data.authors|join(', ') }}</div>
-    <div class="cv-pub-title">{{ data.title }}</div>
-    {% if data.link %}
-    <div class="cv-pub-cite">
-        {{ data.citation }} [<a href="{{ data.link }}">{{ data.link }}</a>]
-    </div>
-    {% else %}
-    <div class="cv-pub-cite">
-        {{ data.citation }}
-    </div>
-    {% endif %}
-    {% if data.notes %}
-    <div class="cv-pub-notes">
-        ({{ data.notes }})
-    </div>
-    {% endif %}
-</div>
-{% endmacro %}
-
-
-{% macro personal_item(data) %}
-<div class="row">
-    <div class="cv-per-val col-xs-6">
-        {{ data.first_name }} {{data.middle_name }} {{ data.last_name }}
-    </div>
-    <div class="cv-per-val col-xs-6">{{ data.telephone }}</div>
-</div>
-<div class="row">
-    <div class="cv-per-val col-xs-6">
-        {{ data.address.base }}
-    </div>
-    <div class="cv-per-val col-xs-6">Skype: {{ data.skype }}</div>
-</div>
-<div class="row">
-    <div class="cv-per-val col-xs-6">
-        {{ data.address.postal_code }}, {{ data.address.city }},
-        {{ data.address.state }}, {{ data.address.country }}
-    </div>
-    <div class="cv-per-val col-xs-6">
-        <a href="mailto:{{ data.email }}">{{ data.email }}</a>
-    </div>
-</div>
-<div class="row">
-    <div class="cv-per-val col-xs-6">{{ data.others[0] }}</div>
-    <div class="cv-per-val col-xs-6">
-        <a href="{{ data.site }}">{{ data.site }}</a>
-    </div>
-</div>
-{% endmacro %}
-
-
 {% macro skill_item(data) %}
 <div class="cv-entry">
     <div class="cv-entry-title serif">Programming &amp; Software</div>
     <hr>
-    <div class="cv-prog-cat row">
-        <div class="cv-cat-title col-xs-3">Experienced</div>
-        <div class="col-xs-9">
-            {{ data.programming.experienced|join(', ') }}
-        </div>
+    <div class="cv-prog-cat">
+        <div class="cv-cat-title serif">Experienced:</div>
+        <div>{{ data.programming.experienced|join(', ') }}</div>
     </div>
-    <div class="cv-prog-cat row">
-        <div class="cv-cat-title col-xs-3">Knowledgeble</div>
-        <div class="col-xs-9">
-            {{ data.programming.sporadic|join(', ') }}
-        </div>
+    <div class="cv-prog-cat">
+        <div class="cv-cat-title serif">Knowledgeble:</div>
+        <div>{{ data.programming.sporadic|join(', ') }}</div>
     </div>
 </div>
 
 <div class="cv-entry">
     <div class="cv-entry-title serif">Languages</div>
     <hr>
-    <div class="row">
-        <div class="col-xs-12">{{ data.languages|join(', ') }}</div>
-    </div>
+    <div>{{ data.languages|join(', ') }}</div>
 </div>
 {% endmacro %}
 
@@ -148,8 +85,9 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <link href="https://fonts.googleapis.com/css?family=Roboto|Scope+One" rel="stylesheet">
-        <link rel="stylesheet", href="css/bootstrap.css">
+        <link href="https://fonts.googleapis.com/css?family=Quicksand|Raleway&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans+Condensed&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Bitter&display=swap" rel="stylesheet">
         <link rel="stylesheet", href="css/style.css">
         <title>CV</title>
     </head>
@@ -159,24 +97,16 @@
             <div class="cv-header-name serif">
                 {{ cv.personal.first_name }} {{ cv.personal.last_name }}
             </div>
-            <div class="cv-header-details row">
-                <div class="col-xs-3 serif">{{ cv.personal.email }}</div>
-                <div class="col-xs-6 serif">
-                    {% set address = cv.personal.address %}
-                    {{ address.base }}
-                    {{ address.postal_code }},
-                    {{ address.city }},
-                    {{ address.country }}
-                </div>
-                <div class="col-xs-3 serif">{{ cv.personal.telephone }}</div>
+            <div class="cv-header-details">
+                <div class="serif">{{ cv.personal.email }}</div>
+                <div class="serif">{{ cv.personal.telephone }}</div>
             </div>
         </div>
 
-        {{ section('Highlights', cv.highlights, hil_item) }}
+        {# {{ section('Highlights', cv.highlights, hil_item) }} #}
         {{ section('Experience', cv.experience, exp_item) }}
-        {{ section('Skills', cv.skills, skill_item) }}
         {{ section('Education', cv.education, edu_item) }}
-        {# {{ section('Publications', cv.publications, pub_item) }} #}
+        {{ section('Skills', cv.skills, skill_item) }}
 
     </div></body>
 </html>

@@ -19,7 +19,11 @@
     <div class="cv-entry-header">
         <div class="cv-entry-title serif">{{ data.title }}</div>
         <div class="cv-entry-title serif">{{ data.institution }}</div>
+        {% if data.country %}
         <div class="cv-entry-inst">{{ data.city }}, {{ data.country }}</div>
+        {% else %}
+        <div class="cv-entry-inst">{{ data.city }}</div>
+        {% endif %}
         <div class="cv-entry-period">[{{ data.start }} - {{ data.end }}]</div>
     </div>
     <hr>
@@ -47,14 +51,13 @@
     </div>
     <hr>
     <div class="cv-entry-body">
+        <div class="cv-entry-description">{{ data.description }}</div>
         {% if data.responsibilities %}
         <ul>
             {% for resp in data.responsibilities %}
             <li>{{ resp }}</li>
             {% endfor %}
         </ul>
-        {% else %}
-        <div class="cv-entry-description">{{ data.description }}</div>
         {% endif %}
     </div>
 </div>
@@ -70,7 +73,7 @@
         <div class="cv-entry-description">{{ data.programming.experienced|join(', ') }}</div>
     </div>
     <div class="cv-prog-cat">
-        <div class="cv-cat-title serif">Knowledgeble:</div>
+        <div class="cv-cat-title serif">Knowledgeable:</div>
         <div class="cv-entry-description">{{ data.programming.sporadic|join(', ') }}</div>
     </div>
 </div>

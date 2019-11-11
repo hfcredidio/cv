@@ -36,7 +36,7 @@ hr {
 }
 
 .cv-header {
-    text-align: center;
+    text-align: right;
     padding-bottom: 5mm;
 }
 
@@ -50,11 +50,11 @@ hr {
 
 .cv-header-details {
     display: flex;
-    justify-content: center;
+    justify-content: right;
 }
 
 .cv-header-details div {
-    padding: 0 2.5mm 0 2.5mm
+    padding: 0 0mm 0 8mm
 }
 
 .cv-section {
@@ -78,6 +78,14 @@ hr {
 .cv-entry {
     margin-top: 2mm;
     margin-bottom: 2mm;
+}
+
+.cv-entry:first-child {
+    margin-top: 0mm;
+}
+
+.cv-entry:last-child {
+    margin-bottom: 0mm;
 }
 
 .cv-entry-header {
@@ -118,7 +126,7 @@ hr {
     margin-bottom: 1.5mm;
     display: grid;
     align-items: center;
-    grid-template-columns: 25% 1fr;
+    grid-template-columns: 27% 1fr;
 }
 
 .cv-cat-title {
